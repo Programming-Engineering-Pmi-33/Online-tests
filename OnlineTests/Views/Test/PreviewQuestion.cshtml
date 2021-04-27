@@ -1,0 +1,31 @@
+﻿@model OnlineTests.Models.TestItem
+@{
+    ViewData["Title"] = "Question";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<body>
+
+    <div class="container">
+        <div>
+            <h1>@ViewBag.testItem.Question</h1>
+        </div>
+
+        <a asp-controller="Test" asp-action="AddOption" class="btn btn-outline-primary">Add Option</a>
+    </div>
+
+    <div>
+        <ol>
+            @foreach (var o in ViewBag.options)
+            {
+                <li>
+                    <h3>@o.Answer</h3>
+
+                </li>
+            }
+        </ol>
+
+        <a asp-controller="Test" asp-action="Preview" asp-route-id="@ViewBag.testId" class="btn btn-outline-primary">Save</a>
+    </div>
+</body>

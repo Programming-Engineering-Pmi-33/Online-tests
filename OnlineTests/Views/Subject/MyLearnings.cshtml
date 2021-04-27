@@ -1,0 +1,27 @@
+﻿@model OnlineTests.Models.Subject
+
+@{
+    ViewData["Title"] = "Learnigs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <div>
+        <h3>Subjects</h3>
+        <table class="table">
+            <tr>
+
+                <td><p>Subject</p></td>
+                <td><p>Mark</p></td>
+
+            </tr>
+            @foreach (var b in ViewBag.learnings)
+            {
+                <tr>
+                    <td><a asp-controller="Subject" asp-action="Subject" asp-route-id="@b.Subject.Id">@b.Subject.Name</a></td>
+                    <td><p>@b.Mark</p></td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>

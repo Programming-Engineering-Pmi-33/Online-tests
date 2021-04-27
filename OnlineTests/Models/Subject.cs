@@ -11,6 +11,8 @@ namespace OnlineTests.Models
         [Required, MinLength(1), MaxLength(50)]
         public string Name { get; set; }
 
+        public int TeacherId { get; set; }
+
         public virtual List<Test> Tests { get; set; }
     }
 }

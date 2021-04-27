@@ -10,6 +10,8 @@ namespace OnlineTests.Models
         [Key]
         public int Id { get; set; }
 
+        public string Name { get; set; }
+
         [Required]
         public int SubjectId { get; set; }
 
@@ -19,7 +21,6 @@ namespace OnlineTests.Models
 
         public bool IsPrivate { get; set; }
 
-        [MinLength(1), MaxLength(50)]
         public string KeyWord { get; set; }
 
          public virtual List<TestSummary> TestSummaries { get; set; }

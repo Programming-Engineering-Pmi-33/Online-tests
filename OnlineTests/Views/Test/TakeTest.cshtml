@@ -1,0 +1,47 @@
+﻿@model OnlineTests.Models.Test
+@addTagHelper *, OnlineTests
+@{
+    ViewData["Title"] = ViewBag.test.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+    <div class="container">
+        <div>
+            <h1>@ViewBag.test.Name</h1>
+        </div>
+    </div>
+
+    <div>
+        @{
+
+            <form asp-controller="Test" asp-action="SubmitTest" enctype="multipart/form-data">
+                <ol>
+                    @foreach (var q in ViewBag.questions)
+                    {
+                        <li>
+                            <div>
+                                <h3>@q.Question</h3>
+                                <p>Options:</p>
+                                <ol>
+                                    @foreach (var o in q.TestItemOptions)
+                                    {
+                                        <li>
+                                            <input type="checkbox" class="form-control" />
+                                            <p>@o.Answer</p>
+                                        </li>
+                                    }
+                                </ol>
+                            </div>
+                        </li>
+                    }
+                </ol>
+
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+    </div>
+</body>

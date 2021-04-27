@@ -1,0 +1,37 @@
+﻿@model OnlineTests.Models.Subject
+@{
+    ViewData["Title"] = ViewBag.subject.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<body>
+
+    <div class="container collapse d-sm-inline-flex flex-sm-row">
+        <div>
+            <h1>@ViewBag.subject.Name</h1>
+            <p>Teacher: <a asp-controller="User" asp-action="Profile" asp-route-Id=@ViewBag.subject.TeacherId> @ViewBag.teacherName</a></p>
+        </div>
+    </div>
+    <a asp-controller="Test" asp-action="CreateTest" class="btn btn-primary">Add Test</a>
+    <div>
+        <h3>Students</h3>
+        <table class="table">
+            <tr>
+
+                <td><p>First Name</p></td>
+                <td><p>Last Name</p></td>
+                <td><p>Mark</p></td>
+
+            </tr>
+            @foreach (var b in ViewBag.subjectSummary)
+            {
+                <tr>
+                    <td><p>@b.Student.FirstName</p></td>
+                    <td><p>@b.Student.LastName</p></td>
+                    <td><p>@b.Mark</p></td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>

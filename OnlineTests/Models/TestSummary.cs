@@ -11,7 +11,7 @@ namespace OnlineTests.Models
         public int Id { get; set; }
 
         [Required]
-        public string OwnerUserId { get; set; }
+        public int OwnerUserId { get; set; }
 
         [Required]
         public int TestId { get; set; }

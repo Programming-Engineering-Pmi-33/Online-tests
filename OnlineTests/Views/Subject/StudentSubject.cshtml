@@ -1,0 +1,42 @@
+﻿@model OnlineTests.Models.Subject
+@addTagHelper *, OnlineTests
+@{
+    ViewData["Title"] = ViewBag.subject.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+    <div class="container collapse d-sm-inline-flex flex-sm-row">
+        <div>
+            <h1>@ViewBag.subject.Name</h1>
+            <p>Teacher: <a asp-controller="User" asp-action="Profile" asp-route-Id=@ViewBag.subject.TeacherId> @ViewBag.teacherName</a></p>
+        </div>
+
+    </div>
+
+    <div>
+        <h3>Tests</h3>
+        <table class="table">
+            <tr>
+
+                <td><p>Test</p></td>
+                <td><p>Attempts</p></td>
+                <td><p>Max mark</p></td>
+                <td><p>Last attempt</p></td>
+                <td><p>Attepmt</p></td>
+
+            </tr>
+            @foreach (var b in ViewBag.subjectSummary)
+            {
+                <tr>
+                    <td><p>@b.Test.Name</p></td>
+                    <td><p>@b.attempts</p></td>
+                    <td><p>@b.maxMark</p></td>
+                    <td><p>@b.lastAttempt</p></td>
+                    <td><a asp-controller="Test" asp-action="Preview" asp-route-id="@b.Test.Id">Start Test</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
